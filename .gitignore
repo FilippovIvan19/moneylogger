@@ -1,0 +1,6 @@
+**/.idea
+**/target
+**/.angular
+**/node_modules
+
+*.iml

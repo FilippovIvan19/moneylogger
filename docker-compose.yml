@@ -1,0 +1,35 @@
+networks:
+  frontend:
+  backend:
+
+services:
+  money_logger_app:
+    build: ./backend
+    container_name: money_logger_app_container
+    depends_on:
+      - money_logger_db
+    networks:
+      - frontend
+      - backend
+    ports: # for backend testing
+      - "8080:8080"
+
+  money_logger_db:
+    build: ./database
+    container_name: money_logger_db_container
+    ports: # only for testing
+      - "8081:5432"
+    environment: # todo remove passwords
+      - POSTGRES_DB=money_logger_db
+      - POSTGRES_USER=money_logger_user
+      - POSTGRES_PASSWORD=money_logger_password
+    networks:
+      - backend
+
+  money_logger_frontend:
+    build: ./frontend
+    container_name: money_logger_frontend_container
+    ports:
+      - "8088:80" # 80 is for nginx, not 4200 for angular itself
+    networks:
+      - frontend

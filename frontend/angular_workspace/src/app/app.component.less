@@ -1,0 +1,30 @@
+// @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.radio-app-chooser {
+  display: inline-block;
+  margin-right: 10px;
+}
+.radio-app-chooser input[type=radio] {
+  display: none;
+}
+.radio-app-chooser label {
+  font-family: "Inter";
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 35px;
+  //border: 1px solid #999;
+  border-radius: 25px;
+  user-select: none;
+}
+
+/* Checked */
+.radio-app-chooser input[type=radio]:checked + label {
+  background: #e6eef9;
+  color: #185ee0;
+}
+
+/* Hover */
+.radio-app-chooser label:hover {
+  color: #666;
+}

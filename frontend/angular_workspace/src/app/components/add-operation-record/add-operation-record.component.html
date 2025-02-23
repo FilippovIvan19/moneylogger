@@ -1,0 +1,50 @@
+<p>add-operation-record works!</p>
+
+<form [formGroup]="applyForm" (submit)="save()">
+  <table cellspacing="10px">
+    <tr>
+      <td class="tab">Amount:</td>
+      <td><input type="number" formControlName="amount"></td>
+    </tr>
+    <tr>
+      <td class="tab">Date:</td>
+      <td><input type="date" formControlName="date"></td>
+    </tr>
+    <tr>
+      <td class="tab">Category:</td>
+      <select formControlName="category">
+        <option hidden value="0">chose category</option>
+        <option *ngFor="let category of possibleCategories" value={{category.id}}>
+          {{category.name}}
+        </option>
+      </select>
+    </tr>
+    <tr>
+      <td class="tab">Spending:</td>
+      <td>
+        <input type="radio" formControlName="spending" value='{{true}}' id="spending-true">
+        <label for="spending-true">spending</label>
+        <input type="radio" formControlName="spending" value=bool(false) id="spending-false">
+        <label for="spending-false">income</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="tab">Currency:</td>
+      <td>
+        <input type="radio" formControlName="currencyCode" value="RUR" id="RUR">
+        <label for="RUR">RUR</label>
+        <input type="radio" formControlName="currencyCode" value="USD" id="USD">
+        <label for="USD">USD</label>
+        <input type="radio" formControlName="currencyCode" value="CAD" id="CAD">
+        <label for="CAD">CAD</label>
+        <input type="radio" formControlName="currencyCode" value="EUR" id="EUR">
+        <label for="EUR">EUR</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="tab">Cash back:</td>
+      <td><input type="number" formControlName="cashBack"></td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>
