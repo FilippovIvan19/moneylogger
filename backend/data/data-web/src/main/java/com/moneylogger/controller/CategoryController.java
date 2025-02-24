@@ -5,7 +5,6 @@ import com.moneylogger.model.Category;
 import com.moneylogger.service.impl.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-//@CrossOrigin(origins = "http://localhost:8088")
 @RequestMapping("/categories")
 public class CategoryController {
     private final CategoryService categoryService;

@@ -21,5 +21,5 @@ public class Category implements Identifiable {
     private String name;
 
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
-    private Long parentId;
+    private Long parentId; // todo change to Category object
 }

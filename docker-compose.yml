@@ -11,8 +11,9 @@ services:
     networks:
       - frontend
       - backend
-    ports: # for backend testing
-      - "8080:8080"
+    ports:
+      - "8080:8080" # for backend testing
+      - "8000:8000" # for debug
 
   money_logger_db:
     build: ./database

@@ -12,14 +12,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "records")
-public class OperationRecord implements Identifiable { // todo rename to OperationRecord
+public class OperationRecord implements Identifiable {
     @Id
     @SequenceGenerator(name = "records_seq", sequenceName = "records_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "records_seq")
     private Long id;
 
     @JoinColumn(name = "category_id", referencedColumnName = "id", table = "categories")
-    private Long categoryId;
+    private Long categoryId; // todo change to Category object
 
     @Column(name = "date", nullable = false)
     private Date date = new Date();
