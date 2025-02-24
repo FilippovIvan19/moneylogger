@@ -14,11 +14,9 @@ public abstract class AbstractJpaService<T extends Identifiable> implements Base
 
     @Override
     public Optional<T> findById(Long id) {
-        log.trace("findById(id = {})", id); // todo create annotation for logging input and output
         return getRepository().findById(id);
     }
 
-    //    @Transactional
     @Override
     public void deleteById(Long id) {
         getRepository().deleteById(id);

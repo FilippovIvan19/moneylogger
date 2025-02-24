@@ -1,6 +1,7 @@
 package com.moneylogger.controller;
 
 
+import com.moneylogger.aop.api.LogCall;
 import com.moneylogger.dto.OperationRecordDto;
 import com.moneylogger.mapper.OperationRecordMapper;
 import com.moneylogger.model.OperationRecord;
@@ -25,46 +26,45 @@ public class OperationRecordController {
     private final OperationRecordService operationRecordService;
     private final OperationRecordMapper operationRecordMapper;
 
+    @LogCall
     @GetMapping("/all")
     public ResponseEntity<List<OperationRecordDto>> findAll() {
-        log.debug("requested: operationRecord get     (all)");
-        System.out.println("GETTING allOperationRecords");
         List<OperationRecord> allOperationRecords = operationRecordService.findAll();
         return ResponseEntity.ok(operationRecordMapper.toDto(allOperationRecords));
     }
 
+    @LogCall
     @GetMapping("byParameters")
     public ResponseEntity<List<OperationRecordDto>> findByParameters(@RequestBody OperationRecordService.Parameters parameters) {
-        log.debug("requested: operationRecord get    (parameters = {})", parameters);
         List<OperationRecord> operationRecords = operationRecordService.findByParameters(parameters);
         return ResponseEntity.ok().body(operationRecordMapper.toDto(operationRecords));
     }
 
+    @LogCall
     @GetMapping("byId/{id}")
     public ResponseEntity<OperationRecordDto> findById(@PathVariable("id") Long id) {
-        log.debug("requested: operationRecord get      (id = {})", id);
         Optional<OperationRecord> operationRecord = operationRecordService.findById(id);
         return ResponseEntity.of(operationRecord.map(operationRecordMapper::toDto));
     }
 
+    @LogCall
     @DeleteMapping(value = "byId/{id}")
     public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
-        log.debug("requested: operationRecord  delete (id = {})", id);
         operationRecordService.deleteById(id);
         return ResponseEntity.ok().body("operationRecord with id = " + id + " was deleted");
     }
 
+    @LogCall
     @PostMapping(value = "")
     public ResponseEntity<String> create(@Validated(OnCreate.class) @RequestBody OperationRecordDto operationRecord) {
-        log.debug("requested: operationRecord  create (amount = {}{}, categoryId = {})", operationRecord.isSpending() ? "-" : "+", operationRecord.getAmount(), operationRecord.getCategoryId());
         operationRecordService.create(operationRecordMapper.toEntity(operationRecord));
         return ResponseEntity.ok().body("operationRecord with id = " + operationRecord.getId() + " was created"); //todo use created entity as return value
     }
 
+    @LogCall
     @PutMapping(value = "")
     public ResponseEntity<String> update(@Validated(OnUpdate.class) @RequestBody OperationRecordDto operationRecord) {
         Long id = operationRecord.getId();
-        log.debug("requested: operationRecord  update (id = {})", id);
         operationRecordService.update(operationRecordMapper.toEntity(operationRecord));
         return ResponseEntity.ok().body("operationRecord with id = " + id + " was updated");
     }
