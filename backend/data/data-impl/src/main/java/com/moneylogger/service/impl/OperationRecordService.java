@@ -5,8 +5,8 @@ import com.moneylogger.repository.api.OperationRecordRepository;
 import com.moneylogger.service.api.BaseEntityService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,9 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class OperationRecordService extends AbstractJpaService<OperationRecord> implements BaseEntityService<OperationRecord> {
     private final OperationRecordRepository operationRecordRepository;
-
-    @Autowired
-    public OperationRecordService(OperationRecordRepository operationRecordRepository) {
-        this.operationRecordRepository = operationRecordRepository;
-    }
 
     @Override
     protected JpaRepository<OperationRecord, Long> getRepository() {
