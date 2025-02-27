@@ -13,7 +13,7 @@ create table categories
 alter table categories
     owner to money_logger_user;
 
-create sequence categories_sequence start 10000;
+create sequence categories_sequence start 1000000;
 
 
 create table records
@@ -35,7 +35,23 @@ create table records
 alter table records
     owner to money_logger_user;
 
-create sequence records_sequence start 10000;
+create sequence records_sequence start 2000000;
 
 
-create sequence hibernate_sequence start 10000;
+create table users
+(
+    id        integer      not null
+        constraint users_pk
+            primary key,
+    login     varchar(500) not null unique,
+    password  varchar(500) not null,
+    email     varchar(500) not null
+);
+
+alter table users
+    owner to money_logger_user;
+
+create sequence users_sequence start 3000000;
+
+
+create sequence hibernate_sequence start 10000000;

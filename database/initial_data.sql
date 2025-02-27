@@ -48,3 +48,8 @@ VALUES
 -- --     (120, 'вложения'),
 -- --     (121, 'вложения');
 
+
+INSERT INTO users (id, login, password, email)
+VALUES
+    (1, 'admin', '$2a$12$8.TcGxS9uWamhrmavrKkV.NlJvRYB8t83nbnnlcOpoE3dDwWUojui', 'admin@email.com'),
+    (2, 'user', '$2a$12$AlgTn706cCwPOYNYYiYs/O15HTUD7t72W9IE/EZHansuntIEDyxnq', 'user@email.com');
