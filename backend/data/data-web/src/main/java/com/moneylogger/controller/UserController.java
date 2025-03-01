@@ -23,7 +23,7 @@ import java.util.Objects;
 @Validated
 @RequiredArgsConstructor
 @RequestMapping("/users")
-public class UserController {
+public class UserController { // todo move all security logic to auth module
     private final UserService userService;
 
     @LogCall

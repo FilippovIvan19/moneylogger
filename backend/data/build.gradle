@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(":data:data-api")
+    implementation project(":data:data-impl")
+    implementation project(":data:data-web")
+}
+
+jar.enabled = false
