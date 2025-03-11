@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class OperationRecordDto { // todo use java record?
     @Positive(message = "Amount must be positive.", groups = {OnCreate.class, OnUpdate.class})
     private Double amount;
 
+    @Length(max = 10)
     private String currencyCode;
 
     @PositiveOrZero(message = "Cashback amount must be positive or zero.", groups = {OnCreate.class, OnUpdate.class})
