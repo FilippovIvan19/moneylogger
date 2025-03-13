@@ -2,7 +2,7 @@ package com.moneylogger.controller;
 
 
 import com.moneylogger.model.Category;
-import com.moneylogger.service.impl.CategoryService;
+import com.moneylogger.service.api.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

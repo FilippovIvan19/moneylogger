@@ -2,7 +2,7 @@ package com.moneylogger.service.impl;
 
 import com.moneylogger.model.User;
 import com.moneylogger.repository.api.UserRepository;
-import com.moneylogger.service.api.BaseEntityService;
+import com.moneylogger.service.api.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserService extends AbstractJpaService<User> implements BaseEntityService<User>, UserDetailsService {
+public class UserServiceImpl extends AbstractJpaService<User> implements UserService, UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
@@ -25,7 +25,8 @@ public class UserService extends AbstractJpaService<User> implements BaseEntityS
     }
 
 
-    Optional<User> findByLogin(String login) {
+    @Override
+    public Optional<User> findByLogin(String login) {
         return userRepository.findByLogin(login);
     }
 

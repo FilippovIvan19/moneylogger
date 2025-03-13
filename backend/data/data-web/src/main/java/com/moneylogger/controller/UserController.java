@@ -3,7 +3,7 @@ package com.moneylogger.controller;
 
 import com.moneylogger.aop.api.LogCall;
 import com.moneylogger.model.User;
-import com.moneylogger.service.impl.UserService;
+import com.moneylogger.service.api.UserService;
 import com.moneylogger.validation.group.OnCreate;
 import com.moneylogger.validation.group.OnUpdate;
 import lombok.RequiredArgsConstructor;

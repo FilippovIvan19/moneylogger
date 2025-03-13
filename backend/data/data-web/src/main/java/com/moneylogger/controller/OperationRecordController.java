@@ -5,7 +5,7 @@ import com.moneylogger.aop.api.LogCall;
 import com.moneylogger.dto.OperationRecordDto;
 import com.moneylogger.mapper.OperationRecordMapper;
 import com.moneylogger.model.OperationRecord;
-import com.moneylogger.service.impl.OperationRecordService;
+import com.moneylogger.service.api.OperationRecordService;
 import com.moneylogger.validation.group.OnCreate;
 import com.moneylogger.validation.group.OnUpdate;
 import lombok.RequiredArgsConstructor;
