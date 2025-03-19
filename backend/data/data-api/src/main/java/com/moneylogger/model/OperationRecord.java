@@ -5,24 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "records")
+@Table(name = "records") // todo rename to operation_record
 public class OperationRecord implements Identifiable {
     @Id
     @SequenceGenerator(name = "records_seq", sequenceName = "records_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "records_seq")
     private Long id;
 
-    @JoinColumn(name = "category_id", referencedColumnName = "id", table = "categories")
-    private Long categoryId; // todo change to Category object
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
     @Column(name = "date", nullable = false)
-    private Date date = new Date();
+    private LocalDate date = LocalDate.now();
 
     @Column(name = "spending", nullable = false)
     private boolean spending = true; // false for income

@@ -22,4 +22,9 @@ public class Category implements Identifiable {
 
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
     private Long parentId; // todo change to Category object
+
+
+    public Category (Long id) { // todo add to all Identifiable, maybe via abstract class
+        this.id = id;
+    }
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface OperationRecordService extends BaseEntityService<OperationRecord> {
@@ -12,9 +13,9 @@ public interface OperationRecordService extends BaseEntityService<OperationRecor
 
     @AllArgsConstructor
     @NoArgsConstructor
-    class Parameters { // todo refactor to record
-        public Date startDate;
-        public Date endDate;
+    class Parameters { // todo refactor to record ?
+        public LocalDate startDate; // todo replace with LocalDate?
+        public LocalDate endDate;
         public Long categoryId;
         public boolean spending;
         public Double minAmount;
