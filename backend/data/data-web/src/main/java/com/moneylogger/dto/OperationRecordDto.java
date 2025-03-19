@@ -25,7 +25,7 @@ public class OperationRecordDto { // todo use java record?
     @Positive(message = "Amount must be positive.", groups = {OnCreate.class, OnUpdate.class})
     private Double amount;
 
-    @Length(max = 10)
+    @Length(max = 10, groups = {OnCreate.class, OnUpdate.class})
     private String currencyCode;
 
     @PositiveOrZero(message = "Cashback amount must be positive or zero.", groups = {OnCreate.class, OnUpdate.class})
