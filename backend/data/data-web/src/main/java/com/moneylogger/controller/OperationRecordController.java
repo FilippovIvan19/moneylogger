@@ -4,6 +4,7 @@ package com.moneylogger.controller;
 import com.moneylogger.aop.api.LogCall;
 import com.moneylogger.dto.OperationRecordDto;
 import com.moneylogger.mapper.OperationRecordMapper;
+import com.moneylogger.model.MonthInfo;
 import com.moneylogger.model.OperationRecord;
 import com.moneylogger.service.api.OperationRecordService;
 import com.moneylogger.validation.group.OnCreate;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,6 +69,12 @@ public class OperationRecordController {
         Long id = operationRecord.getId();
         operationRecordService.update(operationRecordMapper.toEntity(operationRecord));
         return ResponseEntity.ok().body("operationRecord with id = " + id + " was updated");
+    }
+
+    @LogCall
+    @GetMapping("forMonth/{year}/{month}")
+    public ResponseEntity<MonthInfo> getMoneyInfoByMonth(@PathVariable int year, @PathVariable int month) {
+        return ResponseEntity.ok().body(operationRecordService.getMoneyInfoByMonth(year, Month.of(month))); // todo convert to dto // maybe move all dtos to api module ?
     }
 
 }
