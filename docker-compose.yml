@@ -1,25 +1,36 @@
 networks:
   frontend:
   backend:
+  microservices-net:
 
 services:
-  money_logger_app:
-    build: ./backend
-    container_name: money_logger_app_container
+  money_logger_monolith_app:
+    build: ./backend/monolith
+    container_name: monolith-app-container
     depends_on:
       - money_logger_db
     networks:
       - frontend
       - backend
+      - microservices-net
     ports:
       - "8080:8080" # for backend testing
       - "8000:8000" # for debug
 
+  money_logger_microservice_accounts:
+    build: ./backend/microservices/accounts
+    container_name: microservice-accounts-container
+    networks:
+      - microservices-net
+    ports:
+      - "8081:8081" # for testing
+      - "8001:8001" # for debug
+
   money_logger_db:
     build: ./database
     container_name: money_logger_db_container
-    ports: # only for testing
-      - "8081:5432"
+    # ports: # only for testing
+    #   - "5433:5432"
     environment: # todo remove passwords
       - POSTGRES_DB=money_logger_db
       - POSTGRES_USER=money_logger_user
