@@ -1,6 +1,5 @@
 package com.moneylogger.service.api;
 
-import com.moneylogger.model.Category;
 import com.moneylogger.model.Identifiable;
 
 import java.util.List;
