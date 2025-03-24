@@ -3,7 +3,6 @@ package com.moneylogger.service.impl;
 import com.moneylogger.model.BankCard;
 import com.moneylogger.service.api.BankCardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +12,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class BankCardServiceImpl implements BankCardService {
-
-    private final ApplicationContext context;
 
     private final Map<Long, BankCard> storage = Map.of(
             1L, new BankCard(1L, "sber debit card", "1427", BankCard.Type.DEBIT),
